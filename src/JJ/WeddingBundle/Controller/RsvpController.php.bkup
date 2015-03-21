@@ -1,0 +1,275 @@
+<?php
+
+namespace JJ\WeddingBundle\Controller;
+
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+use JJ\WeddingBundle\Entity\Rsvp;
+use JJ\WeddingBundle\Form\RsvpType;
+
+use JJ\WeddingBundle\Entity\Registrant;
+use JJ\WeddingBundle\Entity\Party;
+
+/**
+ * Rsvp controller.
+ *
+ */
+class RsvpController extends Controller
+{
+
+    /**
+     * Lists all Rsvp entities.
+     *
+     */
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('JJWeddingBundle:Rsvp')->findAll();
+
+        return $this->render('JJWeddingBundle:Rsvp:index.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+    /**
+     * Creates a new Rsvp entity.
+     *
+     */
+    public function createAction(Request $request)
+    {
+        // new rsvp object
+        $rsvp = new Rsvp();
+
+        $formdata = $request->request->get('jj_weddingbundle_rsvp');
+        $partyId = $formdata['party'];
+
+        // get the entity manager
+        $em = $this->getDoctrine()->getManager();
+
+        // get party object
+        $party = $em->getRepository('JJWeddingBundle:Party')->find($partyId);
+
+        // get registrants object
+        $registrants = $em->getRepository('JJWeddingBundle:Registrant')->findBy(
+            array('party' => $partyId),
+            array('orderInParty' => 'ASC', 'adultOrChild' => 'ASC')
+        );
+
+        // add party to rsvp object
+        $rsvp->setParty($party);
+        
+        // add registrants to rsvp object
+        foreach ($registrants as $k => $v) {
+            $rsvp->getRegistrants()->add($v);
+        }
+        
+        // process form
+        $form = $this->createCreateForm($rsvp);
+        $form->handleRequest($request);
+        echo '<pre>';var_dump($form);exit;
+
+        if ($form->isValid()) {
+            $em->persist($rsvp);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('rsvp_show', array('id' => $rsvp->getId())));
+        }
+
+        return $this->render('JJWeddingBundle:Rsvp:new.html.twig', array(
+            'entity' => $rsvp,
+            'form'   => $form->createView(),
+        ));
+    }
+
+    /**
+    * Creates a form to create a Rsvp entity.
+    *
+    * @param Rsvp $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createCreateForm(Rsvp $entity)
+    {
+        $form = $this->createForm(new RsvpType(), $entity, array(
+            'action' => $this->generateUrl('rsvp_create'),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Create'));
+
+        return $form;
+    }
+
+    /**
+     * Displays a form to create a new Rsvp entity.
+     *
+     */
+    public function newAction($partyId)
+    {
+        // new rsvp object
+        $rsvp = new Rsvp();
+
+        // get entity manager
+        $em = $this->getDoctrine()->getManager();
+        
+        // get party object
+        $party = $em->getRepository('JJWeddingBundle:Party')->find($partyId);
+        
+        // get registrants object
+        $registrants = $em->getRepository('JJWeddingBundle:Registrant')->findBy(
+            array('party' => $partyId),
+            array('orderInParty' => 'ASC', 'adultOrChild' => 'ASC')
+        );
+
+        // add party to rsvp object
+        $rsvp->setParty($party);
+
+        // add registrants to rsvp object
+        foreach ($registrants as $k => $v) {
+            $rsvp->getRegistrants()->add($v);
+        }
+
+        $form   = $this->createCreateForm($rsvp);
+
+        return $this->render('JJWeddingBundle:Rsvp:new.html.twig', array(
+            'entity'  => $rsvp,
+            'partyId' => $partyId,
+            'form'    => $form->createView(),
+        ));
+    }
+
+    /**
+     * Finds and displays a Rsvp entity.
+     *
+     */
+    public function showAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('JJWeddingBundle:Rsvp')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Rsvp entity.');
+        }
+
+        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('JJWeddingBundle:Rsvp:show.html.twig', array(
+            'entity'      => $entity,
+            'delete_form' => $deleteForm->createView(),        ));
+    }
+
+    /**
+     * Displays a form to edit an existing Rsvp entity.
+     *
+     */
+    public function editAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('JJWeddingBundle:Rsvp')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Rsvp entity.');
+        }
+
+        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($id);
+
+        return $this->render('JJWeddingBundle:Rsvp:edit.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+    /**
+    * Creates a form to edit a Rsvp entity.
+    *
+    * @param Rsvp $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createEditForm(Rsvp $entity)
+    {
+        $form = $this->createForm(new RsvpType(), $entity, array(
+            'action' => $this->generateUrl('rsvp_update', array('id' => $entity->getId())),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array('label' => 'Update'));
+
+        return $form;
+    }
+    /**
+     * Edits an existing Rsvp entity.
+     *
+     */
+    public function updateAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('JJWeddingBundle:Rsvp')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Rsvp entity.');
+        }
+
+        $deleteForm = $this->createDeleteForm($id);
+        $editForm = $this->createEditForm($entity);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isValid()) {
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('rsvp_edit', array('id' => $id)));
+        }
+
+        return $this->render('JJWeddingBundle:Rsvp:edit.html.twig', array(
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+    /**
+     * Deletes a Rsvp entity.
+     *
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $form = $this->createDeleteForm($id);
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('JJWeddingBundle:Rsvp')->find($id);
+
+            if (!$entity) {
+                throw $this->createNotFoundException('Unable to find Rsvp entity.');
+            }
+
+            $em->remove($entity);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('rsvp'));
+    }
+
+    /**
+     * Creates a form to delete a Rsvp entity by id.
+     *
+     * @param mixed $id The entity id
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm($id)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('rsvp_delete', array('id' => $id)))
+            ->setMethod('POST')
+            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->getForm()
+        ;
+    }
+}

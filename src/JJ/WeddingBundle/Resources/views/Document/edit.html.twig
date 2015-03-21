@@ -1,0 +1,75 @@
+{% extends 'JJWeddingBundle::manage.html.twig' %}
+
+{% block main %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><span class="fa fa-picure-o"></span> Edit Photo</h4>
+        </div>
+        <div class="panel-body">
+            {{ form_start(edit_form) }}
+
+                <div>
+                    {{ form_errors(edit_form) }}
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-4 col-sm-offset-4">
+                        <img id="preview" src="{{ asset(entity.getWebPath)|imagine_filter('medium', true) }}" alt="image preview" class="img-responsive" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        {{ form_label(edit_form.filename, 'Filename') }}
+                        {{ form_errors(edit_form.filename) }}
+                        {{ form_widget(edit_form.filename, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        {{ form_label(edit_form.title, 'Title') }}
+                        {{ form_errors(edit_form.title) }}
+                        {{ form_widget(edit_form.title, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                 <div class="row">
+                    <div class="form-group col-sm-12">
+                        {{ form_label(edit_form.description, 'Description') }}
+                        {{ form_errors(edit_form.description) }}
+                        {{ form_widget(edit_form.description, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        {{ form_label(edit_form.galleryName, 'Gallery Name') }}
+                        {{ form_errors(edit_form.galleryName) }}
+                        {{ form_widget(edit_form.galleryName, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group col-sm-6">
+                        {{ form_label(edit_form.orderInGallery, 'Order') }}
+                        {{ form_errors(edit_form.orderInGallery) }}
+                        {{ form_widget(edit_form.orderInGallery, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-3 col-sm-offset-9">
+                        {{ form_widget(edit_form.submit, {'attr': {'class': 'btn btn-default form-control'}}) }}
+                    </div>
+                </div>
+
+                {{ form_rest(edit_form) }}
+            {{ form_end(edit_form) }}
+
+        </div>
+        <div class="panel-footer">
+            <a href="{{ path('document') }}" class="btn btn-xs btn-danger" title="cancel">
+                <span class="fa fa-times-circle"></span> Cancel</span>
+            </a>
+            {{ form(delete_form) }}
+        </div>
+    </div>
+{% endblock %}

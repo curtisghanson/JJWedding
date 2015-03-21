@@ -1,0 +1,63 @@
+JJ\WeddingBundle\Entity\Document:
+    type:            entity
+    table:           document
+    repositoryClass: JJ\WeddingBundle\Entity\DocumentRepository
+    fields:
+        id:
+            type:     integer
+            id:       true
+            generator:
+                strategy: AUTO
+        path:
+            column:   path
+            type:     string
+            length:   255
+            nullable: false
+            unique:   false
+        filename:
+            column:   filename
+            type:     string
+            length:   255
+            nullable: false
+            unique:   false
+        mimetype:
+            column:   mimetype
+            type:     string
+            length:   255
+            nullable: true
+            unique:   false
+        hash:
+            column:   hash
+            type:     string
+            length:   255
+            nullable: false
+            unique:   true
+        title:
+            column:   title
+            type:     string
+            length:   255
+            nullable: true
+            unique:   false
+        description:
+            column:   description
+            type:     text
+            nullable: trye
+            unique:   false
+        galleryName:
+            column:   gallery_name
+            type:     string
+            length:   255
+            nullable: true
+            unique:   false
+        orderInGallery:
+            column:   order_in_gallery
+            type:     integer
+            nullable: true
+            unique:   false
+    lifecycleCallbacks:
+        prePersist:  [ preUpload ]
+        preUpdate:   [ preUpload ]
+        postPersist: [ upload ]
+        postUpdate:  [ upload ]
+        preRemove:   [ storeFilenameForRemove ]
+        postRemove:  [ removeUpload ]

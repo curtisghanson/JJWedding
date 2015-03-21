@@ -1,0 +1,27 @@
+/* Designed by Sudtipos */
+@font-face {
+  font-family: 'Fanwood-Regular';
+  src: url('../font/fanwood/fanwood-webfont.eot');
+  src: url('../font/fanwood/fanwood-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../font/fanwood/fanwood-webfont.woff') format('woff'),
+       url('../font/fanwood/fanwood-webfont.ttf') format('truetype'),
+       url('../font/fanwood/fanwood-webfont.svg#Fanwood-Regular') format('svg');
+}
+
+.fanwood {
+  font-family: 'Fanwood-Regular',serif;
+}
+
+/* Designed by Sudtipos */
+@font-face {
+  font-family: 'Fanwood-Italic';
+  src: url('../font/fanwood/fanwood_italic-webfont.eot');
+  src: url('../font/fanwood/fanwood_italic-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../font/fanwood/fanwood_italic-webfont.woff') format('woff'),
+       url('../font/fanwood/fanwood_italic-webfont.ttf') format('truetype'),
+       url('../font/fanwood/fanwood_italic-webfont.svg#Fanwood-Italic') format('svg');
+}
+
+.fanwood-italic {
+  font-family: 'Fanwood-Italic',serif;
+}

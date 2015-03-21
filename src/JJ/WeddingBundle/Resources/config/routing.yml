@@ -1,0 +1,27 @@
+index:
+    pattern:  /
+    defaults: { _controller: JJWeddingBundle:Default:index }
+
+manage:
+    pattern:  /manage
+    defaults: { _controller: JJWeddingBundle:Default:manage }
+
+recache:
+    pattern:  /manage/recache
+    defaults: { _controller: JJWeddingBundle:Default:recache }
+
+search:
+    pattern:  /search/{query}
+    defaults: { _controller: JJWeddingBundle:Default:search }
+    requirements:
+        _method: get
+
+#rsvp_form:
+#    pattern:  /rsvpform/{query}
+#    defaults: { _controller: JJWeddingBundle:Default:rsvpForm }
+#    requirements:
+#        _method: get
+
+search_form:
+    pattern:  /searchform/reload
+    defaults: { _controller: JJWeddingBundle:Default:searchForm }

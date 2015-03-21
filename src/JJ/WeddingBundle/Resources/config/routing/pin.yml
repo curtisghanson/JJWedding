@@ -1,0 +1,30 @@
+pin:
+    pattern:  /
+    defaults: { _controller: "JJWeddingBundle:Pin:index" }
+
+pin_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "JJWeddingBundle:Pin:show" }
+
+pin_new:
+    pattern:  /new
+    defaults: { _controller: "JJWeddingBundle:Pin:new" }
+
+pin_create:
+    pattern:  /create
+    defaults: { _controller: "JJWeddingBundle:Pin:create" }
+    requirements: { _method: post }
+
+pin_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "JJWeddingBundle:Pin:edit" }
+
+pin_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "JJWeddingBundle:Pin:update" }
+    requirements: { _method: post|put }
+
+pin_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "JJWeddingBundle:Pin:delete" }
+    requirements: { _method: post|delete }

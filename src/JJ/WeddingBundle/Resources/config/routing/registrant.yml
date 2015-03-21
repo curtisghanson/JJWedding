@@ -1,0 +1,30 @@
+registrant:
+    pattern:  /
+    defaults: { _controller: "JJWeddingBundle:Registrant:index" }
+
+registrant_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "JJWeddingBundle:Registrant:show" }
+
+registrant_new:
+    pattern:  /new
+    defaults: { _controller: "JJWeddingBundle:Registrant:new" }
+
+registrant_create:
+    pattern:  /create
+    defaults: { _controller: "JJWeddingBundle:Registrant:create" }
+    requirements: { _method: post }
+
+registrant_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "JJWeddingBundle:Registrant:edit" }
+
+registrant_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "JJWeddingBundle:Registrant:update" }
+    requirements: { _method: post|put }
+
+registrant_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "JJWeddingBundle:Registrant:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,92 @@
+{% extends 'JJWeddingBundle::manage.html.twig' %}
+
+{% block main %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><span class="fa fa-user"></span> View Registrant</h4>
+        </div>
+        <div class="panel-body">
+
+            <h4>
+                {% if entity.prefix %}{{ entity.prefix }}{% endif %}
+                {% if entity.firstName %}{{ entity.firstName }}{% endif %}
+                {% if entity.middleName %}{{ entity.middleName }}{% endif %}
+                {% if entity.lastName %}{{ entity.lastName }}{% endif %}
+                {% if entity.suffix %}{{ entity.suffix }}{% endif %}
+            </h4>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="dtable">
+                        <div class="dtable-row">
+                            <div class="dtable-cell fixed-sm">
+                                <span class="fa fa-map-marker"></span>
+                            </div>
+                            <div class="dtable-cell">
+                                {% if entity.street1 %}{{ entity.street1 }}<br/>{% endif %}
+                                {% if entity.street2 %}{{ entity.street2 }}<br/>{% endif %}
+                                {% if entity.city %}{{ entity.city }}, {% endif %}
+                                {% if entity.state %}{{ entity.state }} {% endif %}
+                                {% if entity.zip %}{{ entity.zip }}{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="dtable">
+                        <div class="dtable-row">
+                            <div class="dtable-cell fixed-sm">
+                                <span class="fa fa-phone"></span>
+                            </div>
+                            <div class="dtable-cell">
+                                {% if entity.phone %}{{ entity.phone }}{% endif %}
+                            </div>
+                        </div>
+                        <div class="dtable-row">
+                            <div class="dtable-cell fixed-sm">
+                                <span class="fa fa-envelope-o"></span>
+                            </div>
+                            <div class="dtable-cell">
+                                {% if entity.email %}{{ entity.email }}{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="dtable">
+                        <div class="dtable-row">
+                            <div class="dtable-cell fixed-sm">
+                                <span class="fa fa-user"></span>
+                            </div>
+                            <div class="dtable-cell">
+                                {% if entity.adultOrChild %}{{ entity.adultOrChild }}<br/>{% endif %}
+                                {% if entity.gender %}{{ entity.gender }}{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="dtable">
+                        <div class="dtable-row">
+                            <div class="dtable-cell fixed-sm">
+                                <span class="fa fa-users"></span>
+                            </div>
+                            <div class="dtable-cell">
+                                {% if entity.party %}{{ entity.party.name }}<br/>{% endif %}
+                                {% if entity.headOfParty %}Head of party<br/>{% endif %}
+                                {% if entity.orderInParty %}Order: {{ entity.orderInParty }}{% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <a href="{{ path('registrant') }}">Back to list</a>
+            <a href="{{ path('registrant_edit', { 'id': entity.id }) }}">Edit</a>
+            {{ form(delete_form) }}
+        </div>
+    </div>
+{% endblock main %}

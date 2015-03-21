@@ -1,0 +1,50 @@
+login:
+    path: /login
+    defaults: { _controller: JJWeddingBundle:Security:login }
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
+
+JJWeddingBundle:
+    resource: "@JJWeddingBundle/Resources/config/routing.yml"
+    prefix:   /
+
+JJWeddingBundle_rsvpweb:
+    resource: "@JJWeddingBundle/Resources/config/routing/rsvpweb.yml"
+    prefix:   /
+
+JJWeddingBundle_registrant:
+    resource: "@JJWeddingBundle/Resources/config/routing/registrant.yml"
+    prefix:   /manage/registrant
+
+JJWeddingBundle_rsvp:
+    resource: "@JJWeddingBundle/Resources/config/routing/rsvp.yml"
+    prefix:   /manage/rsvp
+
+JJWeddingBundle_party:
+    resource: "@JJWeddingBundle/Resources/config/routing/party.yml"
+    prefix:   /manage/party
+
+JJWeddingBundle_block:
+    resource: "@JJWeddingBundle/Resources/config/routing/block.yml"
+    prefix:   /manage/block
+
+JJWeddingBundle_pin:
+    resource: "@JJWeddingBundle/Resources/config/routing/pin.yml"
+    prefix:   /manage/pin
+
+JJWeddingBundle_document:
+    resource: '@JJWeddingBundle/Resources/config/routing/document.yml'
+    prefix:   /manage/document
+
+
+# Third Party Routing
+# ######################################################
+
+# Liip Imagine
+_imagine:
+    resource: .
+    type:     imagine

@@ -1,0 +1,28 @@
+{% block thanksHead %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3><span class="fa fa-heart-o"></span> thanks</h3>
+            </div>
+        </div>
+    </div>
+{% endblock thanksHead %}
+
+{% block thanksBody %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                {% for entity in entities %}
+                    {% if entity.location == 'thanks' %}
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a href="{{ path('block_edit', { 'id': entity.id }) }}" class="edit-box">
+                                <span class="fa fa-pencil"></span>
+                            </a>
+                        {% endif %}
+                        {{ entity.body|raw }}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock thanksBody %}

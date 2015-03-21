@@ -1,0 +1,42 @@
+document:
+    pattern:  /{page}
+    defaults: { _controller: "JJWeddingBundle:Document:index", page: 1 }
+    requirements:
+        page: \d+
+
+document_index:
+    pattern:  /
+    defaults: { _controller: "JJWeddingBundle:Document:index" }
+
+document_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "JJWeddingBundle:Document:show" }
+
+document_new:
+    pattern:  /new
+    defaults: { _controller: 'JJWeddingBundle:Document:new' }
+
+document_upload:
+    pattern:  /upload
+    defaults: { _controller: 'JJWeddingBundle:Document:upload' }
+    requirements: { _method: post }
+
+document_download:
+    pattern:  /{id}/download
+    defaults: { _controller: 'JJWeddingBundle:Document:download' }
+    requirements:
+        id: \d+
+
+document_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "JJWeddingBundle:Document:edit" }
+
+document_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "JJWeddingBundle:Document:update" }
+    requirements: { _method: post|put }
+
+document_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "JJWeddingBundle:Document:delete" }
+    requirements: { _method: post|delete }

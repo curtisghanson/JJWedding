@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Rsvp</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ entity.comment }}</td>
+            </tr>
+            <tr>
+                <th>Referer</th>
+                <td>{{ entity.referer }}</td>
+            </tr>
+            <tr>
+                <th>Useragent</th>
+                <td>{{ entity.userAgent }}</td>
+            </tr>
+            <tr>
+                <th>Ip</th>
+                <td>{{ entity.ip }}</td>
+            </tr>
+            <tr>
+                <th>Port</th>
+                <td>{{ entity.port }}</td>
+            </tr>
+            <tr>
+                <th>Formsubmitted</th>
+                <td>{{ entity.formSubmitted|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('rsvp') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('rsvp_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

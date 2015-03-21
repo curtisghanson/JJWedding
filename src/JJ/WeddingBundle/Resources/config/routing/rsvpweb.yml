@@ -1,0 +1,29 @@
+rsvp_web_check:
+    pattern:      /rsvpwebcheck/{partyId}
+    defaults:     { _controller: "JJWeddingBundle:RsvpWeb:check" }
+
+rsvp_web_new:
+    pattern:      /rsvpwebnew/{partyId}
+    defaults:     { _controller: "JJWeddingBundle:RsvpWeb:new" }
+
+rsvp_web_create:
+    pattern:      /rsvpwebcreate
+    defaults:     { _controller: "JJWeddingBundle:RsvpWeb:create" }
+    requirements: { _method: post }
+
+rsvp_web_edit:
+    pattern:      /rsvpwebedit/{id}
+    defaults:     { _controller: "JJWeddingBundle:RsvpWeb:edit" }
+
+rsvp_web_update:
+    pattern:      /rsvpwebupdate/{id}
+    defaults:     { _controller: "JJWeddingBundle:RsvpWeb:update" }
+    requirements: { _method: post|put }
+
+rsvp_web_created:
+    pattern:      /rsvpwebcreated
+    defaults:     { _controller: "JJWeddingBundle:RvspWeb:created"}
+
+rsvp_web_updated:
+    pattern:      /rsvpwebupdated
+    defaults:     { _controller: "JJWeddingBundle:RvspWeb:updated"}

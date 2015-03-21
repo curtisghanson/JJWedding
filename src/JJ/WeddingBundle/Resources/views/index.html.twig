@@ -1,0 +1,193 @@
+{# src/JJ/WeddingBundle/Resources/views/Default/index.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% block banner %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="banner-header">
+            </div>
+        </div>
+    </div>
+{% endblock banner %}
+
+{% block nav %}
+    <ul class="nav navbar-nav">
+        <li class="active">
+            <a href="#home" class="scrollspies">
+                <span class="fa fa-home"></span>
+                <span class="hidden-xs hidden-sm">home</span>
+            </a>
+        </li>
+        <li>
+            <a href="#us" class="scrollspies">
+                <span class="fa fa-female"></span><span class="fa fa-male"></span>
+                <span class="hidden-xs hidden-sm">us</span>
+            </a>
+        </li>
+        <li>
+            <a href="#wedding" class="scrollspies">
+                <span class="fa fa-bell-o"></span>
+                <span class="hidden-xs hidden-sm">the wedding</span>
+            </a>
+        </li>
+        <li>
+            <a href="#rsvp" class="scrollspies">
+                <span class="fa fa-envelope-o"></span>
+                <span class="hidden-xs hidden-sm">rsvp</span>
+            </a>
+        </li>
+        <li>
+            <a href="#gallery" class="scrollspies">
+                <span class="fa fa-camera-retro"></span>
+                <span class="hidden-xs hidden-sm">gallery</span>
+            </a>
+        </li>
+        <li>
+            <a href="#thanks" class="scrollspies">
+                <span class="fa fa-heart-o"></span>
+                <span class="hidden-xs hidden-sm">thanks</span>
+            </a>
+        </li>
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li>
+            <a href="{{ path('manage') }}">
+                <span class="fa fa-dashboard"></span>
+                <span class="hidden-xs hidden-sm">manage</span>
+            </a>
+        </li>
+        {% endif %}
+    </ul><!-- END ul.nav.navbar-nav -->
+{% endblock nav %}
+
+{% block us %}
+    <img
+        id="bird-1-1"
+        alt="bird-1-1"
+        data-start="top:40%;"
+        data-end="top:60%;"
+        data-smooth-scrolling="on"
+        class="hidden-xs hidden-sm"
+        src="/uploads/media/9bfeffdf733c3318db32c870248e81350724320443c1b3788483b1c79838b174e264a4928f7d4f5fb7e841bb7888bc50fbb9a172752c1c0ca6b99f4524d8b1b8.svg"
+    />
+    <img
+        id="bird-1-2"
+        alt="bird-1-2"
+        data-start="top:60%;left:15%;"
+        data-end="top:30%;left:50%;"
+        data-smooth-scrolling="on"
+        class="hidden-xs hidden-sm"
+        src="/uploads/media/f1b9d154dbb05cd723621c508cd4d8c29d36c8d54caa609d3133ebabe84c19bbac496a632f731ec6fe04f01b1eeec0c4ca230717350dcd1d0053ef7192284851.svg"
+    />
+    <img
+        id="bird-2"
+        alt="bird-2"
+        data-start="bottom:20%;"
+        data-end="bottom:0%;"
+        data-smooth-scrolling="on"
+        class="hidden-xs hidden-sm"
+        src="/uploads/media/7374727698452dee78628a68520c044507f457e8f69b92b3fd198ad0edcd3b4647403e5a22e122520ff7cb8366898ea145c8def2eae68de51e96081ca7574e39.svg"
+    />
+    {{ include('JJWeddingBundle::us.html.twig') }}
+{% endblock us %}
+
+{% block wedding %}
+    <!--
+    <div clas="container">
+    <div class="row">
+    <div class="col-sm-12">
+    <svg
+        xmlns:dc="http://purl.org/dc/elements/1.1/"
+        xmlns:cc="http://creativecommons.org/ns#"
+        xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+        xmlns:svg="http://www.w3.org/2000/svg"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+        width="250"
+        height="250"
+        id="svg3096"
+        preserveAspectRatio="xMinYMin meet"
+        class="svg-content"
+        version="1.1"
+        inkscape:version="0.48.4 r9939"
+        sodipodi:docname="man3.svg"
+        inkscape:export-filename="/home/chanson/Pictures/jeremy/man3.png"
+        inkscape:export-xdpi="90"
+        inkscape:export-ydpi="90">
+        <defs id="defs3098" />
+        <sodipodi:namedview
+            id="base"
+            pagecolor="#ffffff"
+            bordercolor="#666666"
+            borderopacity="1.0"
+            inkscape:pageopacity="0.0"
+            inkscape:pageshadow="2"
+            inkscape:zoom="1"
+            inkscape:cx="-168.78571"
+            inkscape:cy="151.07143"
+            inkscape:document-units="px"
+            inkscape:current-layer="layer1"
+            showgrid="false"
+            fit-margin-top="0"
+            fit-margin-left="0"
+            fit-margin-right="0"
+            fit-margin-bottom="0"
+            inkscape:window-width="1062"
+            inkscape:window-height="514"
+            inkscape:window-x="2660"
+            inkscape:window-y="82"
+            inkscape:window-maximized="0" />
+        <metadata id="metadata3101">
+            <rdf:RDF>
+                <cc:Work rdf:about="">
+                    <dc:format>image/svg+xml</dc:format>
+                    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                    <dc:title></dc:title>
+                </cc:Work>
+            </rdf:RDF>
+        </metadata>
+        <g
+            inkscape:label="Layer 1"
+            inkscape:groupmode="layer"
+            id="layer1"
+            transform="translate(-251.78571,-433.43361)">
+            <path
+                inkscape:connector-curvature="0"
+                style="fill:#b8b8b8;fill-opacity:1;fill-rule:nonzero;stroke:none"
+                d="m 376.78571,433.43361 c -15.60459,0 -30.01908,9.07398 -41.67735,24.39413 -19.07775,-2.58801 -35.68102,1.17985 -46.71551,12.21301 -11.03316,11.03444 -14.80224,27.64031 -12.21306,46.71556 -15.32132,11.65944 -24.39408,26.07271 -24.39408,41.6773 0,15.60459 9.07286,30.01908 24.39408,41.67724 -2.58908,19.07786 1.1799,35.68245 12.21306,46.71562 11.03449,11.03438 27.63776,14.80102 46.71551,12.21296 11.65817,15.3202 26.07276,24.39418 41.67735,24.39418 15.60459,0 30.01908,-9.07398 41.67735,-24.39418 19.07775,2.58806 35.68102,-1.17858 46.71551,-12.21296 11.03316,-11.03317 14.80102,-27.63776 12.21306,-46.71562 15.3201,-11.65816 24.39408,-26.07265 24.39408,-41.67724 0,-15.60459 -9.07408,-30.01786 -24.39408,-41.6773 2.58796,-19.07525 -1.1799,-35.68112 -12.21306,-46.71556 -11.03449,-11.03316 -27.63776,-14.80102 -46.71551,-12.21301 -11.65817,-15.32015 -26.07276,-24.39413 -41.67735,-24.39413 z m 0,10.20408 c 7.60592,0 14.33173,2.88138 19.9298,6.82398 5.60857,3.95026 10.14796,8.96684 13.61612,13.52041 l 3.60326,4.75127 5.89929,-0.79719 c 3.35714,-0.45281 6.62888,-0.70153 9.75765,-0.70153 5.96306,0 11.34184,0.82526 16.10327,2.48725 4.75775,1.65943 8.91337,4.16071 12.27683,7.52551 3.94256,3.94132 6.45919,8.66581 7.97194,13.55229 1.51531,4.89158 2.03949,9.97194 2.04082,14.76403 0,3.47194 -0.29204,6.80357 -0.70153,9.82143 l -0.79725,5.89924 4.75133,3.60331 c 4.55357,3.46811 9.56888,8.00765 13.52041,13.61607 3.94388,5.59822 6.82398,12.32653 6.82398,19.92985 0,7.60459 -2.88143,14.33286 -6.82398,19.9298 -3.95021,5.60847 -8.96684,10.14796 -13.52041,13.61612 l -4.75133,3.60326 0.79725,5.89929 c 0.40949,3.01653 0.70153,6.34949 0.70153,9.82143 0,4.79337 -0.52551,9.87245 -2.04082,14.76398 -1.51275,4.88653 -4.02938,9.58041 -7.97194,13.52041 -3.36224,3.36612 -7.51918,5.89673 -12.27683,7.55744 -4.7601,1.66327 -10.14021,2.48725 -16.10327,2.48725 -3.12877,0 -6.39796,-0.24745 -9.75765,-0.70153 l -5.89929,-0.79725 -3.60326,4.75133 c -3.46806,4.55225 -8.00755,9.5701 -13.61612,13.52041 -5.59674,3.94133 -12.32521,6.82398 -19.9298,6.82398 -7.60204,0 -14.33173,-2.88265 -19.9298,-6.82398 -5.60857,-3.95031 -10.14673,-8.96684 -13.61612,-13.52041 l -3.60326,-4.75133 -5.89929,0.79725 c -3.35582,0.45408 -6.63265,0.70153 -9.75765,0.70153 -5.96429,0 -11.37378,-0.82398 -16.13521,-2.48725 -4.75765,-1.65949 -8.8852,-4.16204 -12.24489,-7.52551 -3.94256,-3.94265 -6.45919,-8.66581 -7.97194,-13.55234 -1.51653,-4.89153 -2.0396,-9.97194 -2.04082,-14.76398 0,-3.47449 0.29214,-6.80357 0.70153,-9.82143 l 0.79725,-5.89929 -4.75133,-3.60326 c -4.55357,-3.46816 -9.56888,-8.00765 -13.52041,-13.61612 -3.94388,-5.59694 -6.82398,-12.32521 -6.82398,-19.9298 0,-7.60332 2.8801,-14.33163 6.82398,-19.92985 3.95153,-5.60842 8.96684,-10.14668 13.52041,-13.61607 l 4.75133,-3.60331 -0.79725,-5.89924 c -0.41071,-3.01658 -0.70153,-6.34949 -0.70153,-9.82143 0,-4.79209 0.52551,-9.87245 2.04082,-14.76403 1.51398,-4.88648 4.02938,-9.60842 7.97194,-13.55229 3.35969,-3.36352 7.51785,-5.86608 12.27683,-7.52551 4.7601,-1.66199 10.13898,-2.48725 16.10327,-2.48725 3.125,0 6.40051,0.24745 9.75765,0.70153 l 5.89929,0.79719 3.60326,-4.75127 c 3.46806,-4.55485 8.00878,-9.57015 13.61612,-13.52041 5.59807,-3.9426 12.32653,-6.82398 19.9298,-6.82398 z"
+                id="path5980" />
+        </g>
+        <text
+            x="125" y="125" text-anchor="middle" font-family="vollkornregular" font-size="14">
+            <tspan x="125">This is some text</tspan>
+            <tspan x="125" dy="1em">And more text</tspan>
+            <tspan x="125" dy="1em">And more text</tspan>
+            <tspan x="125" dy="1em">And more text</tspan>
+            <tspan x="125" dy="1em">And more text</tspan>
+            <tspan x="125" dy="1em">And more text</tspan>
+        </text>
+    </svg>
+    </div>
+    </div>
+    </div>
+    -->
+
+    {{ include('JJWeddingBundle::wedding.html.twig') }}
+{% endblock wedding %}
+
+{% block rsvp %}
+    {{ include('JJWeddingBundle::rsvp.html.twig') }}
+{% endblock rsvp %}
+
+{% block gallery %}
+    {{ render(controller('JJWeddingBundle:Default:gallery', {
+        'galleryName': 'us'
+    })) }}
+{% endblock gallery %}
+
+{% block thanks %}
+    {{ include('JJWeddingBundle::thanks.html.twig') }}
+{% endblock thanks %}
+
+{% block footer %}
+{% endblock footer %}

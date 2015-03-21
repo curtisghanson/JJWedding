@@ -1,0 +1,130 @@
+{% extends '::base.html.twig' %}
+
+{% if app.request.attributes.get('_route') is empty %}
+    {% set currentPath = path('manage') %}
+{% else %}
+    {% set currentPath = path(app.request.attributes.get('_route'),
+                              app.request.attributes.get('_route_params')) %}
+{% endif %}
+
+{% block body %}
+    <div class="text-manage">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>
+                        Jackie-Jeremy Wedding Manager
+                        <a href="{{ path('index') }}" class="btn btn-xs btn-primary">
+                            <span class="fa fa-arrow-circle-left"></span>
+                            Back to site
+                        </a>
+                    </h3>
+                    <hr />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="sidebar">
+                        {% block sidebar %}
+                            <div class="list-group">
+                                <a class="list-group-item{% if currentPath == path('manage') %} active{% endif %}" href="{{ path('manage') }}" title="manage home">
+                                    <span class="fa fa-dashboard"></span>
+                                    <span class="pull-right">Home</span>
+                                </a>
+                                <a class="list-group-item{% if path('pin') in currentPath %} active{% endif %}" href="{{ path('pin') }}" title="pins">
+                                    <span class="fa fa-thumb-tack"></span>
+                                    <span class="pull-right">Pins</span>
+                                </a>
+                                <a class="list-group-item{% if path('block') in currentPath %} active{% endif %}" href="{{ path('block') }}" title="blocks">
+                                    <span class="fa fa-list-alt"></span>
+                                    <span class="pull-right">Blocks</span>
+                                </a>
+                                <a class="list-group-item{% if path('party') in currentPath %} active{% endif %}" href="{{ path('party') }}" title="parties">
+                                    <span class="fa fa-users"></span>
+                                    <span class="pull-right">Parties</span>
+                                </a>
+                                <a class="list-group-item{% if path('registrant') in currentPath %} active{% endif %}" href="{{ path('registrant') }}" title="registrants">
+                                    <span class="fa fa-user"></span>
+                                    <span class="pull-right">Registrants</span>
+                                </a>
+                                <a class="list-group-item{% if path('rsvp') in currentPath %} active{% endif %}" href="{{ path('rsvp') }}" title="rsvps">
+                                    <span class="fa fa-envelope-o"></span>
+                                    <span class="pull-right">RSVPs</span>
+                                </a>
+                                <a class="list-group-item{% if path('document') in currentPath %} active{% endif %}" href="{{ path('document') }}" title="images">
+                                    <span class="fa fa-picture-o"></span>
+                                    <span class="pull-right">Images</span>
+                                </a>
+                                <a class="list-group-item" href="{{ path('logout') }}" title="logout">
+                                    <span class="fa fa-sign-out"></span>
+                                    <span class="pull-right">Logout</span>
+                                </a>
+                            </div>
+                        {% endblock sidebar %}
+                    </div>
+                </div>
+                <div class="col-sm-10">
+                    <div class="main">
+                        {% block main %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">Manager Home</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <p>This is the manager homepage.</p>
+                                    <p>http://codemonkeys.be/2013/01/ajaxify-your-symfony2-forms-with-jquery/</p>
+                                    {{ form_start(search_form) }}
+                                    {{ form_errors(search_form) }}
+
+                                    <div class="form-group">
+                                        <div class="input-group col-xs-12">
+                                            {{ form_errors(search_form.search) }}
+                                            {{ form_widget(search_form.search, {'attr' : {
+                                                'class': 'form-control',
+                                                'placeholder': 'search'
+                                            }}) }}
+                                        <span class="input-group-btn">
+                                            {# <button type="submit" id="form_submit" name="form[submit]" class="btn btn-default"><span class="fa fa-search"></span></button> #}
+                                            {{ form_widget(search_form.submit, {
+                                                'icon':  'fa fa-search',
+                                                'label': ' ',
+                                                'attr':  {'class': 'btn btn-default'}
+                                            }) }}
+                                        </span>
+                                    </div>
+
+                                    {{ form_end(search_form) }}
+                                    {#
+                                    <form id="form" name="form" method="GET" action="">
+                                        <div class="form-group">
+                                            <div class="col-xs-12">
+                                                <div class="input-group">
+                                                    <input type="search" id="form_search" name="form[search]" required="required" class="form-control" placeholder="Search" value="{% if last_search is defined %}{{ last_search }}{% endif %}" />
+                                                    <span class="input-group-btn">
+                                                        <button type="submit" class="btn btn-default" id="form_submit" name="form[submit]" title="submit search"><span class="fa fa-search"></span></button>
+                                                    </span>
+                                                </div><!-- END .input-group -->
+                                            </div><!-- END .col-xs-12 -->
+                                        </div><!-- END .row -->
+                                    </form>
+                                    #}
+                                    <p><strong>Search Results</strong></p>
+                                    <hr/>
+                                    {% if results is defined %}
+                                        {% for result in results %}
+                                            {{ result.firstName }}
+                                        {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="panel-footer">
+                                    <p>footer</p>
+                                </div>
+                            </div>
+                        {% endblock main %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}

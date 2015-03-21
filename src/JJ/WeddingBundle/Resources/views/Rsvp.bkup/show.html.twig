@@ -1,0 +1,56 @@
+{% extends 'JJWeddingBundle::manage.html.twig' %}
+
+{% block main %}
+    <h1>Rsvp</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ entity.comment }}</td>
+            </tr>
+            <tr>
+                <th>Referer</th>
+                <td>{{ entity.referer }}</td>
+            </tr>
+            <tr>
+                <th>Useragent</th>
+                <td>{{ entity.userAgent }}</td>
+            </tr>
+            <tr>
+                <th>Ip</th>
+                <td>{{ entity.ip }}</td>
+            </tr>
+            <tr>
+                <th>Hostname</th>
+                <td>{{ entity.hostName }}</td>
+            </tr>
+            <tr>
+                <th>Formstart</th>
+                <td>{{ entity.formStart|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Formend</th>
+                <td>{{ entity.formEnd|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('rsvp') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('rsvp_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock main %}

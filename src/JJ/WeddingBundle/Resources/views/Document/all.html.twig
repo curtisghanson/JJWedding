@@ -1,0 +1,10 @@
+{% extends 'JJWeddingBundle::manage.html.twig' %}
+
+{% block main %}
+    {% for photo in photos %}
+        <img src="{{ photo.getWebPath()|imagine_filter('large') }}" />
+        <img src="{{ photo.getWebPath()|imagine_filter('medium') }}" />
+        <img src="{{ photo.getWebPath()|imagine_filter('small') }}" />
+        <img src="{{ photo.getWebPath()|imagine_filter('thumb') }}" />
+    {% endfor %}
+{% endblock main %}

@@ -1,0 +1,486 @@
+html, body, p, a {
+    font-family: 'vollkornregular', serif;
+    color: #333333;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+a,
+a:visited,
+.complex-link:hover,
+.complex-link:visited,
+span.gc-cs-link,
+span.gc-cs-link:visited,
+a.list-group-item:hover,
+a.list-group-item:focus,
+.btn-link {
+    color:             #333333;
+    text-decoration:      none;
+    cursor:            pointer;
+}
+
+a:hover,
+a:focus,
+.complex-link:hover > .link-decoration,
+.complex-link:focus > .link-decoration,
+span.gc-cs-link,
+.btn-link:hover {
+    color:             #7631ad;
+    text-decoration: underline;
+    cursor:            pointer;
+    outline:              none;
+}
+
+a.btn-primary {
+    color: #ffffff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'at_flemish_script_iiregular', serif;
+    font-size:    16px;
+    line-height:  20px;
+    margin-top:    8px;
+    margin-bottom: 8px;
+}
+
+h1 {
+    font-size: 4.2rem;
+    line-height: 5.2rem;
+}
+
+h2 {
+    font-size: 3.6rem;
+    line-height: 4.8rem;
+}
+
+h3 {
+    font-size: 3.0rem;
+    line-height: 4.4rem;
+}
+
+h4 {
+    font-size: 2.4rem;
+    line-height: 3.8rem;
+    margin-bottom: 0;
+}
+
+h5 {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+}
+
+h6 {
+    font-size: 1.2rem;
+    line-height: 2.0rem;
+}
+
+h1 > span { font-size: 3.0rem; }
+h2 > span { font-size: 2.4rem; }
+h3 > span { font-size: 1.6rem; }
+h4 > span { font-size: 1.2rem; }
+h5 > span { font-size: 1.0rem; }
+h6 > span { font-size: 1.0rem; }
+
+h4 + p.subheading {
+    margin-top: 0;
+    margin-bottom: 8px;
+    line-height: 14px;
+    height: 24px;
+    text-indent: -6px;
+}
+
+.fa-ul > li > .fa-fw,
+.fa-ul > li > a > .fa-fw {
+    position:      absolute;
+    left:     -2.14285714em;
+    width:     2.14285714em;
+    top:       0.14285714em;
+    text-align:      center;
+}
+
+::selection {
+    background:  #e8dfeb;
+    text-shadow:    none;
+}
+
+/* MANAGE SCREENS */
+.text-manage,
+.text-manage h1,
+.text-manage h2,
+.text-manage h3,
+.text-manage h4,
+.text-manage h5,
+.text-manage h6,
+.text-manage p,
+.text-manage a,
+.text-manage input {
+    font-family: Arial, san-serif;
+}
+
+.form-control-checkbox {
+    display: block;
+    margin: 10px auto !important;
+}
+
+.dtable {
+    display: table;
+    width: 100%;
+}
+
+.dtable-row {
+    display: table-row;
+}
+
+.dtable-cell {
+    display: table-cell;
+}
+
+.fixed-xs { width:  16px; }
+.fixed-sm { width:  32px; }
+.fixed-md { width:  64px; }
+.fixed-lg { width: 128px; }
+.fixed-xl { width: 256px; }
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 999px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
+}
+
+/* SECTION SPECIFIC */
+
+#home, #us, #wedding, #rsvp, #gallery, #thanks {
+    padding-bottom:     20px; 
+    margin-bottom:      20px;
+    position:       relative;
+}
+
+body {
+    background-image: url(/uploads/media/a6fa9dfa50c4efeb4a7afefc8bcca7b5b510fd5741181339d3818446318b539298077da4d0c1abdefd538dd796bfdc6dadd77533e5d28372312dcb6f04c937a9.svg),
+                      url(/uploads/media/1585236473e5c37fc090cbb5ddb4c974cdf9499cd07a298a7b2a62f41ba1c24d69fee32b9918bee45fe0055ed3862e091c7258d4ef0ee7073f39d359046a1688.svg);
+    background-repeat:    no-repeat, no-repeat;
+    background-position:   50% 104%, 50% 104%;
+    background-attachment:   scroll, scroll;
+}
+
+#bird-1-1 {
+    position: absolute;
+    left:          -5%;
+    width:         30%;
+}
+
+#bird-1-2 {
+    position: absolute;
+    width:         12%;
+}
+
+#bird-2 {
+    position: absolute;
+    width:         30%;
+    right:         -5%;
+}
+
+#bird-3 {
+    position: absolute;
+    width:       140px;
+    top:         -64px;
+    left:         16px;
+}
+
+/* Do not use these if skrollr is enabled */
+#bird-1-1 {
+    top:           55%;
+}
+
+#bird-1-2 {
+    left:          40%;
+    top:           50%;
+}
+
+#bird-2 {
+    bottom:          0;
+}
+/* END non-skrollr attributes */
+
+#rsvp .form-control:focus {
+    border-color: #caaae6;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(202,170,230,0.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(202,170,230,0.6);
+}
+
+/* NAVIGATION BAR */
+#nav-wrapper {
+    height: 70px;
+}
+
+#nav {
+    position: absolute;
+    width: 100%;
+}
+
+.navbar {
+    border-radius: 0;
+}
+
+.navbar-nav {
+    display: table;
+    margin: 0 auto;
+    float:    none;
+}
+
+.navbar-nav > li {
+    display: table-cell;
+}
+
+.navbar-nav > li > a {
+    padding-top:    15px;
+    padding-bottom: 15px;
+}
+
+.navbar-purple {
+    /*background-color: #615566;
+    border-color:     #2e1437;*/
+    background-color: #3b3149;
+    border-color:     #3b3149;
+}
+
+.navbar-purple a {
+    color: #ffffff;
+   -webkit-transition: text-shadow .25s ease;
+   -moz-transition:    text-shadow .25s ease;
+   -o-transition:      text-shadow .25s ease;
+    transition:        text-shadow .25s ease;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus,
+.navbar-purple a:hover,
+.navbar-purple a:focus {
+    background-color:         #3b3149 !important;
+    color:                               #ffffff;
+    text-shadow:  0 0 16px rgba(232,223,235,0.8);
+    border-color:                        #caaae6;
+    outline:                                none;
+}
+
+#nav.affix {
+    width: 100%;
+    top:      0;
+    z-index: 10;
+    position: fixed;
+}
+
+#nav.affix:hover {
+    opacity: 1;
+}
+
+.navbar-purple a:hover .fa-bell-o {
+    -webkit-animation: swing 1s;
+    -moz-animation:    swing 1s;
+    -ms-animation:     swing 1s;
+    -o-animation:      swing 1s;
+    animation:         swing 1s;
+}
+
+.navbar-purple a:hover .fa-heart-o {
+    -webkit-animation: pulse 1s;
+    -moz-animation:    pulse 1s;
+    -ms-animation:     pulse 1s;
+    -o-animation:      pulse 1s;
+    animation:         pulse 1s;
+}
+
+.navbar-purple a:hover .fa-envelope-o {
+    -webkit-animation: bounceOutRight 1s;
+    -moz-animation:    bounceOutRight 1s;
+    -ms-animation:     bounceOutRight 1s;
+    -o-animation:      bounceOutRight 1s;
+    animation:         bounceOutRight 1s;
+}
+
+.navbar-nav .hidden-xs,
+.navbar-nav .hidden-sm {
+    display: inline-block!important;
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+    .navbar-nav .hidden-xs,
+    .navbar-nav .hidden-sm {
+        display: none!important;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-nav .hidden-xs,
+    .navbar-nav .hidden-sm {
+        display: none!important;
+    }
+}
+
+#banner {
+    background: url(/bundles/jjwedding/img/site-photos/jj-banner.jpg) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size:    cover;
+    -o-background-size:      cover;
+    background-size:         cover;
+}
+
+.banner-header {
+    margin-top:    20px;
+    margin-bottom: 70px;
+    color: #fff;
+}
+
+.sidebar .list-group-item {
+    padding: 6px 12px;
+}
+
+#map {
+    height: 300px;
+    width:   100%;
+}
+
+#carousel .item {
+  margin: 8px;
+  box-shadow: 4px 4px 8px #888;
+}
+
+#carousel .item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.carousel-nav {
+    margin: 0 4px;
+}
+
+.carousel-nav-item {
+    display: inline-block;
+}
+
+.carousel-nav-item img {
+    margin: 4px;
+    box-shadow: 2px 2px 4px #888;
+}
+
+.polaroid {
+    box-shadow: 4px 4px 8px #888;
+    margin-bottom:          10px;
+}
+
+.polaroid p {
+    padding:             10px;
+}
+
+.edit-box {
+    position:        absolute;
+    box-sizing:    border-box;
+    background:       #dddddd;
+    color:            #615566 !important;
+    text-align:        center;
+    line-height:         30px;
+    top:                  0px;
+    right:                0px;
+    width:               30px;
+    height:              30px;
+    border-radius:       30px;
+    border: 0px solid #ffffff;
+    z-index:               10;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition:    all 0.5s ease-in-out;
+    -ms-transition:     all 0.5s ease-in-out;
+    -o-transition:      all 0.5s ease-in-out;
+    transition:         all 0.5s ease-in-out;
+}
+
+.edit-box:hover {
+    color:            #2e1437 !important;
+    top:                 -5px;
+    right:               -5px;
+    width:               40px;
+    height:              40px;
+    border-radius:       40px;
+    border: 5px solid #caaae6;
+}
+
+.selectable {
+    text-align:                               center;
+    cursor:                                  pointer;
+    -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow:    0 3px 6px rgba(0, 0, 0, 0.1);
+    box-shadow:         0 3px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom:                              20px;
+}
+
+.selectable-header {
+    padding:                     4px;
+    border-top-left-radius:      3px;
+    border-top-right-radius:     3px;
+    color:                   #ffffff;
+}
+
+.selectable-body {
+    padding:                     4px;
+    border-bottom-left-radius:   3px;
+    border-bottom-right-radius:  3px;
+}
+
+.selectable-body > span {
+    display:                   block;
+}
+
+.party-selectable-groom > .selectable-header {
+    background-color:        #b8b8b8;
+}
+
+.party-selectable-bride > .selectable-header {
+    background-color:        #b7a9c2;
+}
+
+.party-selectable-both > .selectable-header,
+.try-again > .selectable-header {
+    background-color:        #d6d6d6;
+}
+
+.form-horizontal .form-group > div {
+    margin-bottom:              20px;
+}
+
+.svg-container {
+display: inline-block;
+position: relative;
+width: 100%;
+padding-bottom: 100%;
+vertical-align: middle;
+overflow: hidden;
+}
+
+.svg-content {
+display: inline-block;
+position: absolute;
+top: 0;
+left: 0;
+}
+
+@media (max-width: 991px) {
+    .text-right {
+        text-align: center;
+    }
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        {% block head %}
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <title>Jacqueline + Jeremy's Wedding Page</title>
+            <meta name="description" content="Jackie and Jeremy are soon to be wed! From this site, family and friends can RSVP, get dates and times of wedding events, get directions to the venue, and view photos from our gallery. After the wedding, we will share more photos from this site!">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+            <link rel="icon" type="image/x-icon" href="http://jackie-jeremy.com/favicon.ico">
+            <link rel="shortcut icon" type="image/x-icon" href="http://jackie-jeremy.com/favicon.ico">
+
+            {% block stylesheets %}
+                <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+                {% stylesheets
+                    '@JJWeddingBundle/Resources/public/css/animate.min.css'
+                    '@JJWeddingBundle/Resources/public/css/font-awesome.min.css'
+                    '@JJWeddingBundle/Resources/public/css/at-flemish-script-ii.min.css'
+                    '@JJWeddingBundle/Resources/public/css/vollkorn.min.css'
+                    '@JJWeddingBundle/Resources/public/css/owl.carousel.css'
+                    '@JJWeddingBundle/Resources/public/css/owl.theme.css'
+                    '@JJWeddingBundle/Resources/public/css/jquery.fancybox.css'
+                    '@JJWeddingBundle/Resources/public/css/main.css'
+                    '@JJWeddingBundle/Resources/public/css/style.css'
+                    filter='uglifycss'
+                    filter='cssrewrite'
+                %}
+                     <link rel="stylesheet" href="{{ asset_url }}" />
+                {% endstylesheets %}
+            {% endblock stylesheets %}
+
+            {% block shims %}
+                {% javascripts
+                        '@JJWeddingBundle/Resources/public/js/modernizr.min.js'
+                        '@JJWeddingBundle/Resources/public/js/respond.min.js'
+                        filter='?uglifyjs2'
+                    %}
+                        <script type="text/javascript" src="{{ asset_url }}"></script>
+                {% endjavascripts %}
+            {% endblock shims %}
+        {% endblock head %}
+    </head>
+
+    <body>
+        <div>
+            {% block body %}
+                <!--[if lt IE 9]>
+                    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+                <![endif]-->
+
+                <header id="home" class="header">
+                    {% block header %}
+                        <div id="banner" class="banner">
+                            <div class="container">
+                                {% block banner %}
+                                {% endblock banner %}
+                            </div>
+                        </div><!-- END banner -->
+                        <div id="nav-wrapper">
+                            <nav id="nav" class="navbar navbar-purple" role="navigation">
+                                <div class="container" id="main-nav">
+                                    {% block nav %}
+                                    {% endblock nav %}
+                                </div>
+                            </nav><!-- END nav -->
+                        </div>
+                    {% endblock header %}
+                </header><!-- END header -->
+
+                <div id="main" class="main">
+                    {% block main %}
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    {% for entity in entities %}
+                                        {% if entity.location == 'introduction' %}
+                                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                                <a href="{{ path('block_edit', { 'id': entity.id }) }}" class="edit-box">
+                                                    <span class="fa fa-pencil"></span>
+                                                </a>
+                                            {% endif %}
+                                            {{ entity.body|raw }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <section id="us" class="us">
+                            {% block us %}
+                                {% block usHead %}{% endblock usHead %}
+                                {% block usBody %}{% endblock usBody %}
+                                {% block usFoot %}{% endblock usFoot %}
+                            {% endblock us %}
+                        </section><!-- END us -->
+
+                        <section id="wedding" class="wedding">
+                            {% block wedding %}
+                                {% block weddingHead %}{% endblock weddingHead %}
+                                {% block weddingBody %}{% endblock weddingBody %}
+                                {% block weddingFoot %}{% endblock weddingFoot %}
+                            {% endblock wedding %}
+                        </section><!-- END wedding -->
+                        
+                        <section id="rsvp" class="rsvp">
+                            {% block rsvp %}
+                                {% block rsvpHead %}{% endblock rsvpHead %}
+                                {% block rsvpBody %}{% endblock rsvpBody %}
+                                {% block rsvpFoot %}{% endblock rsvpFoot %}
+                            {% endblock rsvp %}
+                        </section><!-- END rsvp -->
+
+                        <section id="gallery" class="gallery">
+                            {% block gallery %}
+                                {% block galleryHead %}{% endblock galleryHead %}
+                                {% block galleryBody %}{% endblock galleryBody %}
+                                {% block galleryFoot %}{% endblock galleryFoot %}
+                            {% endblock gallery %}
+                        </section><!-- END gallery -->
+
+                        <section id="thanks" class="thanks">
+                            {% block thanks %}
+                                {% block thanksHead %}{% endblock thanksHead %}
+                                {% block thanksBody %}{% endblock thanksBody %}
+                                {% block thanksFoot %}{% endblock thanksFoot %}
+                            {% endblock thanks %}
+                        </section><!-- END thanks -->
+                        <footer id="footer" class="footer">
+                            {% block footer %}
+                            {% endblock footer %}
+                        </footer><!-- END footer -->
+                    {% endblock main %}
+                </div><!-- END main -->
+
+            {% endblock body %}
+        </div>
+
+        {% block javascripts %}
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+            <script>window.jQuery || document.write('<script src="{{ asset('js/jquery-1.11.1.min.js') }}"><\/script>')</script>
+            <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+            <script>window.jQuery || document.write('<script src="{{ asset('js/bootstrap.min.js') }}"><\/script>')</script>
+            {% javascripts
+                '@JJWeddingBundle/Resources/public/js/owl.carousel.min.js'
+                '@JJWeddingBundle/Resources/public/js/jquery.fancybox.pack.js'
+                '@JJWeddingBundle/Resources/public/js/main.js'
+                filter='uglifyjs2'
+            %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+            <script>
+                $(document).ready(function() {
+                var bodyColor = $('body').css('color');
+                if(bodyColor != 'rgb(51, 51, 51)') {
+                $("head").prepend('<link rel="stylesheet" href="jjwedding/css/bootstrap.min.css">');}});
+            </script>
+        {% endblock javascripts %}
+
+        {% block analytics %}
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+                ga('create', 'UA-39292712-3', 'jackie-jeremy.com');ga('send', 'pageview');
+            </script>
+        {% endblock analytics %}
+    </body>
+</html>

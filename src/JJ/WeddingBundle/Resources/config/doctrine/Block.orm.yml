@@ -1,0 +1,28 @@
+JJ\WeddingBundle\Entity\Block:
+    type:            entity
+    table:           block
+    repositoryClass: JJ\WeddingBundle\Entity\BlockRepository
+    fields:
+        id:
+            type:     integer
+            id:       true
+            generator:
+                strategy: AUTO
+        title:
+            column:   title
+            type:     string
+            length:   255
+            nullable: false
+            unique:   true
+        location:
+            column:  location
+            type:     string
+            length:   255
+            nullable: false
+            unique:   true
+        body:
+            column:   body
+            type:     text
+            nullable: true
+            unique:   false
+    lifecycleCallbacks: {  }

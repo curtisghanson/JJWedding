@@ -1,0 +1,35 @@
+{# src/JJ/WeddingBundle/Resources/views/Default/index.html.twig #}
+{% extends 'JJWeddingBundle::manage.html.twig' %}
+
+{% block main %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><span class="fa fa-sign-in"></span> Login</h4>
+        </div>
+        <div class="panel-body">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.message }}</div>
+            {% endif %}
+
+            <form action="{{ path('login_check') }}" method="post" role="form">
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="_username" class="form-control" value="{{ last_username }}" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="_password" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-sm-offset-9 form-group">
+                        <button type="submit" class="btn btn-primary form-control">login</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock main %}

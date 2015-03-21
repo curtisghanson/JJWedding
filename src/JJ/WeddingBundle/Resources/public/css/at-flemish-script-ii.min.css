@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'at_flemish_script_iiregular';
+    src: url('/bundles/jjwedding/font/at-flemish-script-ii/at-flemish-script-ii-webfont.eot');
+    src: url('/bundles/jjwedding/font/at-flemish-script-ii/at-flemish-script-ii-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/bundles/jjwedding/font/at-flemish-script-ii/at-flemish-script-ii-webfont.woff') format('woff'),
+         url('/bundles/jjwedding/font/at-flemish-script-ii/at-flemish-script-ii-webfont.ttf') format('truetype'),
+         url('/bundles/jjwedding/font/at-flemish-script-ii/at-flemish-script-ii-webfont.svg#at_flemish_script_iiregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.flemish {
+  font-family: 'at_flemish_script_iiregular',serif;
+}

@@ -1,0 +1,13 @@
+/* Designed by Sudtipos */
+@font-face {
+  font-family: 'MrBedfort-Regular';
+  src: url('../font/mr-bedfort/MrBedfort-Regular.eot');
+  src: url('../font/mr-bedfort/MrBedfort-Regular.eot?#iefix') format('embedded-opentype'),
+       url('../font/mr-bedfort/MrBedfort-Regular.woff') format('woff'),
+       url('../font/mr-bedfort/MrBedfort-Regular.ttf') format('truetype'),
+       url('../font/mr-bedfort/MrBedfort-Regular.svg#MrBedfort-Regular') format('svg');
+}
+
+.bedfort {
+  font-family: 'MrBedfort-Regular',sans-serif;
+}

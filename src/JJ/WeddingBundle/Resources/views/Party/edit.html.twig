@@ -1,0 +1,44 @@
+{% extends 'JJWeddingBundle::manage.html.twig' %}
+
+{% block main %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><span class="fa fa-users"></span> Edit Party</h4>
+        </div>
+        <div class="panel-body">
+            {{ form_start(edit_form) }}
+
+                <div>
+                    {{ form_errors(edit_form) }}
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-9">
+                        {{ form_label(edit_form.name, 'Name') }}
+                        {{ form_errors(edit_form.name) }}
+                        {{ form_widget(edit_form.name, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group col-sm-3">
+                        {{ form_label(edit_form.brideOrGroom, 'Side') }}
+                        {{ form_errors(edit_form.brideOrGroom) }}
+                        {{ form_widget(edit_form.brideOrGroom, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-3 col-sm-offset-9">
+                        {{ form_widget(edit_form.submit, {'attr': {'class': 'btn btn-default form-control'}}) }}
+                    </div>
+                </div>
+            {{ form_end(edit_form) }}
+        </div>
+        <div class="panel-footer">
+            <a href="{{ path('party') }}" class="btn btn-xs btn-default">
+                <span class="fa fa-main-reply"></span> Back
+            </a>
+            <div class"pull-right">
+                {{ form(delete_form) }}
+            </div>
+        </div>
+    </div>
+{% endblock main %}

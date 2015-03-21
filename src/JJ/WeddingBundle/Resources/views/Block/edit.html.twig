@@ -1,0 +1,51 @@
+{% extends 'JJWeddingBundle::manage.html.twig' %}
+
+{% block main %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><span class="fa fa-list-alt"></span> Edit Block</h4>
+        </div>
+        <div class="panel-body">
+            {{ form_start(edit_form) }}
+
+                <div>
+                    {{ form_errors(edit_form) }}
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        {{ form_label(edit_form.title, 'Title') }}
+                        {{ form_errors(edit_form.title) }}
+                        {{ form_widget(edit_form.title, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <div class="form-group col-sm-6">
+                        {{ form_label(edit_form.location, 'Location') }}
+                        {{ form_errors(edit_form.location) }}
+                        {{ form_widget(edit_form.location, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        {{ form_label(edit_form.body, 'Body') }}
+                        {{ form_errors(edit_form.body) }}
+                        {{ form_widget(edit_form.body, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-sm-3 col-sm-offset-9">
+                        {{ form_widget(edit_form.submit, {'attr': {'class': 'btn btn-default form-control'}}) }}
+                    </div>
+                </div>
+
+            {{ form_end(edit_form) }}
+
+        </div>
+        <div class="panel-footer">
+            <a href="{{ path('block') }}" class="btn btn-xs btn-danger" title="cancel">
+                <span class="fa fa-times-circle"></span> Cancel</span>
+            </a>
+            {{ form(delete_form) }}
+        </div>
+    </div>
+{% endblock %}

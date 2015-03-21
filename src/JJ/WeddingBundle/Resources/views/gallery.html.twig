@@ -1,0 +1,43 @@
+{% block galleryHead %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3><span class="fa fa-camera-retro"></span> gallery</h3>
+            </div>
+        </div>
+    </div>
+{% endblock galleryHead %}
+
+{% block galleryBody %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-11 col-md-offset-1 col-sm-12">
+                <div id="carousel" class="owl-carousel">
+                    {% for entity in entities %}
+                        <div class="item">
+                            <a class="fancybox" rel="gallery" href="{{ asset(entity.getWebPath())|imagine_filter('large', true) }}" alt="{{ entity.title }}">
+                                <img
+                                    class="lazyOwl"
+                                    data-src="{{ asset(entity.getWebPath())|imagine_filter('medium', true) }}"
+                                    data-lightbox="jjwedding"
+                                    alt="{{ entity.title }}"
+                                />
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-11 col-md-offset-1 col-sm-12">
+                <div id="carousel-nav" class="carousel-nav">
+                    {% for entity in entities %}
+                        <div class="carousel-nav-item">
+                            <img src="{{ asset(entity.getWebPath())|imagine_filter('thumb', true) }}" alt="{{ entity.title }}" class="carousel-nav-item-img" data-image-index="{{ loop.index0 }}"/>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock galleryBody %}

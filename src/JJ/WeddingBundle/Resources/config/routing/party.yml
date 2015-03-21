@@ -1,0 +1,30 @@
+party:
+    pattern:  /
+    defaults: { _controller: "JJWeddingBundle:Party:index" }
+
+party_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "JJWeddingBundle:Party:show" }
+
+party_new:
+    pattern:  /new
+    defaults: { _controller: "JJWeddingBundle:Party:new" }
+
+party_create:
+    pattern:  /create
+    defaults: { _controller: "JJWeddingBundle:Party:create" }
+    requirements: { _method: post }
+
+party_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "JJWeddingBundle:Party:edit" }
+
+party_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "JJWeddingBundle:Party:update" }
+    requirements: { _method: post|put }
+
+party_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "JJWeddingBundle:Party:delete" }
+    requirements: { _method: post|delete }

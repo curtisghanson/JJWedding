@@ -1,0 +1,22 @@
+# src/Acme/UserBundle/Resources/config/validation.yml
+JJ\WeddingBundle\Entity\Pin:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: [name]
+            message: 'This name is already in use.'
+JJ\WeddingBundle\Entity\Document:
+    properties:
+        file:
+            - File:
+                maxSize: 6000000
+JJ\WeddingBundle\Entity\Rsvp:
+    properties:
+        rsvpRegistrant:
+            - Collection:
+                fields:
+                    rsvpType:
+                        - Choice:
+                            choices: [Yes, No]
+                            message: You must select an RSVP choice.
+                allowExtraFields:     true
+                missingFieldsMessage: Yes or No must be checked.

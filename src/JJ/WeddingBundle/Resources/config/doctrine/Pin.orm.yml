@@ -1,0 +1,23 @@
+JJ\WeddingBundle\Entity\Pin:
+    type: entity
+    table: pin
+    repositoryClass: JJ\WeddingBundle\Entity\PinRepository
+    fields:
+        id:
+            type:     integer
+            id:       true
+            generator:
+                strategy: AUTO
+        name:
+            column:   name
+            type:     string
+            length:   255
+            nullable: false
+            unique:   true
+        description:
+            column:   description
+            type:     string
+            length:   255
+            nullable: false
+            unique:   false
+    lifecycleCallbacks: {  }

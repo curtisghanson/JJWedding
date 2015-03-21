@@ -1,0 +1,24 @@
+{% extends 'JJWeddingBundle::manage.html.twig' %}
+
+{% block main %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><span class="fa fa-thumb-tack"></span> View Pin</h4>
+        </div>
+        <div class="panel-body">
+
+            <h4>{{ entity.name }}</h4>
+            <p>{{ entity.description }}</p>
+
+        </div>
+        <div class="panel-footer">
+            <a href="{{ path('pin') }}" class="btn btn-xs btn-default" title="cancel">
+                <span class="fa fa-reply"></span> Back to List</span>
+            </a>
+            <a href="{{ path('pin_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-default" title="edit pin">
+                <span class="fa fa-pencil-square"></span> Edit</span>
+            </a>
+            {{ form(delete_form) }}
+        </div>
+    </div>
+{% endblock %}

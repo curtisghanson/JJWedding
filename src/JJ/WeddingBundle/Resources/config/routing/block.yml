@@ -1,0 +1,30 @@
+block:
+    pattern:  /
+    defaults: { _controller: "JJWeddingBundle:Block:index" }
+
+block_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "JJWeddingBundle:Block:show" }
+
+block_new:
+    pattern:  /new
+    defaults: { _controller: "JJWeddingBundle:Block:new" }
+
+block_create:
+    pattern:  /create
+    defaults: { _controller: "JJWeddingBundle:Block:create" }
+    requirements: { _method: post }
+
+block_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "JJWeddingBundle:Block:edit" }
+
+block_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "JJWeddingBundle:Block:update" }
+    requirements: { _method: post|put }
+
+block_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "JJWeddingBundle:Block:delete" }
+    requirements: { _method: post|delete }

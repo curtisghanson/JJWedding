@@ -1,0 +1,135 @@
+JJ\WeddingBundle\Entity\Registrant:
+    type:            entity
+    table:           registrant
+    repositoryClass: JJ\WeddingBundle\Entity\RegistrantRepository
+    fields:
+        id:
+            type: integer
+            id:   true
+            generator:
+                strategy: AUTO
+        lastName:
+            column:   last_name
+            type:     string
+            length:   64
+            nullable: false
+            unique:   false
+        firstName:
+            column:   first_name
+            type:     string
+            length:   64
+            nullable: false
+            unique:   false
+        middleName:
+            column:   middle_name
+            type:     string
+            length:   32
+            nullable: true
+            unique:   false
+        prefix:
+            column:   prefix
+            type:     string
+            length:   16
+            nullable: true
+            unique:   false
+        suffix:
+            column:   suffix
+            type:     string
+            length:   16
+            nullable: true
+            unique:   false
+        street1:
+            column:   street_1
+            type:     string
+            length:   128
+            nullable: true
+            unique:   false
+        street2:
+            column:   street_2
+            type:     string
+            length:   128
+            nullable: true
+            unique:   false
+        city:
+            column:   city
+            type:     string
+            length:   64
+            nullable: true
+            unique:   false
+        state:
+            column:   state
+            type:     string
+            length:   2
+            nullable: true
+            unique:   false
+        zip:
+            column:   zip
+            type:     string
+            length:   6
+            nullable: true
+            unique:   false
+        country:
+            column:   country
+            type:     string
+            length:   2
+            nullable: true
+            unique:   false
+        gender:
+            column:   gender
+            type:     string
+            length:   6
+            nullable: true
+            unique:   false
+        headOfParty:
+            column:   head_of_party
+            type:     boolean
+            nullable: true
+            unique:   false
+        orderInParty:
+            column:   order_in_party
+            type:     integer
+            nullable: true
+            unique:   false
+        adultOrChild:
+            column:   adult_or_child
+            type:     string
+            length:   5
+            nullable: true
+            unique:   false
+        phone:
+            column:   phone
+            type:     string
+            length:   11
+            nullable: true
+            unique:   false
+        email:
+            column:   email
+            type:     string
+            length:   128
+            nullable: true
+            unique:   false
+        rsvpType:
+            column:   rsvp_type
+            type:     string
+            length:   5
+            nullable: true
+            unique:   false
+        recieveUpdates:
+            column:   recieve_updates
+            type:     boolean
+            nullable: true
+            unique:   false
+    lifecycleCallbacks: {  }
+    manyToOne:
+        party:
+            targetEntity: Party
+            inversedBy:   registrants
+            joinColumn:
+                name:                 party_id
+                referencedColumnName: id
+        rsvp:
+            targetEntity: Rsvp
+            inversedBy:   registrants
+            joinColumn:
+                name:                 rsvp_id
+                referencedColumnName: id

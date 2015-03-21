@@ -1,0 +1,24 @@
+parameters:
+#    jj_wedding.example.class: JJ\WeddingBundle\Example
+    form.type.ckeditor.class: JJ\WeddingBundle\Form\CKEditorType
+    twig.datetimediff.class:  JJ\WeddingBundle\Twig\DateTimeDifferenceExtension
+    file.document.class:      JJ\WeddingBundle\Entity\Document
+
+services:
+#    jj_wedding.example:
+#        class: %jj_wedding.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    form.type.ckeditor:
+        class: %form.type.ckeditor.class%
+        tags:
+            - { name: form.type, alias: ckeditor }
+
+    twig.datetimedifference_extension:
+        class: %twig.datetimediff.class%
+        tags:
+            - { name: twig.extension }
+
+    document:
+        class: %file.document.class%
+        arguments: ["%kernel.root_dir%/../", "%dirs%"]

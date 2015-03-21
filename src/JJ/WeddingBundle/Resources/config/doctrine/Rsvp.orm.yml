@@ -1,0 +1,60 @@
+JJ\WeddingBundle\Entity\Rsvp:
+    type:            entity
+    table:           rsvp
+    repositoryClass: JJ\WeddingBundle\Entity\RsvpRepository
+    fields:
+        id:
+            type: integer
+            id:   true
+            generator:
+                strategy: AUTO
+        comment:
+            column:   comment
+            type:     text
+            nullable: true
+            unique:   false
+        referer:
+            column:   referer
+            type:     string
+            length:   255
+            nullable: true
+            unique:   false
+        userAgent:
+            column:   user_agent
+            type:     string
+            length:   255
+            nullable: true
+            unique:   false
+        ip:
+            column:   ip
+            type:     string
+            length:   255
+            nullable: true
+            unique:   false
+        port:
+            column:   port
+            type:     string
+            length:   255
+            nullable: true
+            unique:   false
+        formSubmitted:
+            column:   form_submitted
+            type:     datetime
+            nullable: true
+            unique:   false
+    lifecycleCallbacks:
+        prePersist: [prePersistFormSubmitted]
+    oneToOne:
+        party:
+            targetEntity: Party
+            inversedBy:   rsvp
+            joinColumn:
+                name:                 party_id
+                referencedColumnName: id
+    oneToMany:
+        registrants:
+            targetEntity: Registrant
+            mappedBy:     rsvp
+            joinColumn:
+                name:                 registrant_id
+                referencedColumnName: id

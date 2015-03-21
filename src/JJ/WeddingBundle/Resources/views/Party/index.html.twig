@@ -1,0 +1,71 @@
+{% extends 'JJWeddingBundle::manage.html.twig' %}
+
+{% block main %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><span class="fa fa-users"></span> Parties</h4>
+        </div>
+        <div class="panel-body">
+            <table class="table table-bordered table-condensed table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>RSVP</th>
+                        <th>Actions</th>
+                        <th>Name</th>
+                        <th>Side</th>
+                        <th>Members</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for entity in entities %}
+                    <tr>
+                        <td>
+                            {% if entity.rsvp %}
+                                <a href="{{ path('rsvp_show', { 'id': entity.rsvp.id }) }}">
+                                    <span class="label label-success">Yes</span>
+                                </a>
+                            {% else %}
+                                <span class="label label-warning">No</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="{{ path('party_show', { 'id': entity.id }) }}" class="btn btn-xs btn-default" title="view"><span class="fa fa-search"></span></a>
+                                <a href="{{ path('party_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-default" title="edit"><span class="fa fa-pencil"></span></a>
+                                <a href="{{ path('rsvp_check', { 'partyId': entity.id }) }}" class="btn btn-xs btn-default" title="rsvp"><span class="fa fa-envelope-o"></span></a>
+                            </div>
+                        </td>
+                        <td>{{ entity.name }}</td>
+                        <td>{{ entity.brideOrGroom }}</td>
+                        <td>
+                            {% if entity.registrants %}
+                                {% set registrants = entity.registrants %}
+                                {% for registrant in registrants %}
+                                    {% if registrant.rsvpType == 'Yes' %}
+                                        <a href="{{ path('registrant_show', { 'id': registrant.id }) }}">
+                                            <span class="label label-success"><span class="fa fa-smile-o"></span> {{ registrant.firstName }}</span>
+                                        </a>
+                                    {% elseif registrant.rsvpType == 'No' %}
+                                        <a href="{{ path('registrant_show', { 'id': registrant.id }) }}">
+                                            <span class="label label-danger"><span class="fa fa-frown-o"></span> {{ registrant.firstName }}</span>
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ path('registrant_show', { 'id': registrant.id }) }}">
+                                            <span class="label label-default"><span class="fa fa-meh-o"></span> {{ registrant.firstName }}</span>
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-footer">
+            <a href="{{ path('party_new') }}" class="btn btn-xs btn-default" title="new party">
+                <span class="fa fa-plus-circle"></span> New Party
+            </a>
+        </div>
+    </div>
+{% endblock main %}

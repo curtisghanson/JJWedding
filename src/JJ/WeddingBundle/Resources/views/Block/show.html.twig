@@ -1,0 +1,22 @@
+{% extends 'JJWeddingBundle::manage.html.twig' %}
+
+{% block main %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><span class="fa fa-list-alt"></span> View Block</h4>
+        </div>
+        <div class="panel-body">
+            <h4>{{ entity.title }} <small title="location"><code>{{ entity.location }}</code></small></h4>
+            <div class="well">
+                {{ entity.body|raw }}
+            </div>
+        </div>
+
+        <div class="panel-footer">
+            <a href="{{ path('block_edit', { 'id': entity.id }) }}" class="btn btn-xs btn-default" title="edit block">
+                <span class="fa fa-pencil-square"></span> Edit Block
+            </a>
+            {{ form(delete_form) }}
+        </div>
+    </div>
+{% endblock main %}

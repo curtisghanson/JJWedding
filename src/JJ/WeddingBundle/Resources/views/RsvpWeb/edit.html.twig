@@ -1,0 +1,109 @@
+{{ form_start(form, {'attr': {
+    'novalidate': 'novalidate',
+    'role':       'form',
+    'class':      'form-horizontal',
+    'id':         'jj_weddingbundle_rsvp_edit',
+}}) }}
+
+    {% if form_errors is defined %}
+        {% if form_errors.isValid == false %}
+            <ul class="fa-ul text-danger">
+                {% for field in form_errors.fields %}
+                    <li><span class="fa-fw fa fa-exclamation-triangle"></span><strong>{{ field.message }}</strong></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+    {{ form_widget(form.referer, {value: app.request.headers.get('referer')}) }}
+    {{ form_widget(form.userAgent, {value: app.request.server.get('HTTP_USER_AGENT')}) }}
+    {{ form_widget(form.ip, {value: app.request.server.get('REMOTE_ADDR')}) }}
+    {{ form_widget(form.port, {value: app.request.server.get('REMOTE_PORT')}) }}
+    {{ form_widget(form.party) }}
+
+    <div class="row hidden-xs hidden-sm">
+        <div class="col-sm-3">
+            <label>Name</label>
+        </div>
+        <div class="col-sm-2">
+            <label>Attending?</label>
+        </div>
+        <div class="col-sm-5">
+            <label>Email</label>
+        </div>
+        <div class="col-sm-2">
+            <label>Updates?</label>
+        </div>
+    </div>
+
+    {% set i = 1 %}
+    {% for registrant in form.registrants %}
+        <div class="form-group">
+            <div class="col-sm-3">
+                <p class="form-control-static">
+                    {{ registrant.vars.value.firstName }} {{ registrant.vars.value.lastName }}
+                </p>
+            </div>
+            <div class="col-sm-2">
+                <label class="visible-xs visible-sm">Attending?</label>
+                <div class="btn-group btn-group-justified" data-toggle="buttons">
+                    {% for choiceFormView in registrant.rsvpType %}
+                            {{ form_widget(choiceFormView, {'attr': {
+                                'tabindex': i
+                            }}) }}
+                            {{ choiceFormView.vars.value }}
+                        </label>
+                        {% set i = i + 1 %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <label class="visible-xs visible-sm">Email</label>
+                {{ form_widget(registrant.email, {'attr': {
+                    'class': 'form-control',
+                    'placeholder': 'email, needed only for notices',
+                    'title': 'Email address, needed only for wedding notices.',
+                    'tabindex': i
+                }}) }}
+                {% set i = i + 1 %}
+            </div>
+            <div class="col-sm-2">
+                <label class="visible-xs visible-sm">Updates?</label>
+                <div class="btn-group btn-group-justified" data-toggle="buttons" title="Email Address is also needed for wedding notices.">
+                        {{ form_widget(registrant.recieveUpdates, {'attr': {
+                            'class': 'btn btn-default',
+                            'tabindex': i
+                        }}) }}
+                        Update Me
+                    </label>
+                    {% set i = i + 1 %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="form-group">
+        <div class="col-sm-12">
+            <label class="visible-xs visible-sm">Comments</label>
+            {{ form_errors(form.comment) }}
+            {{ form_widget(form.comment, {'attr': {
+                'class': 'form-control',
+                'placeholder': 'Send us a message!',
+                'title': 'Send us a message!',
+                'tabindex': i
+            }}) }}
+            {% set i = i + 1 %}
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3 col-sm-push-9">
+            {{ form_widget(form.submit, {'attr': {
+                'class': 'btn btn-default form-control',
+                'title': 'Update Me!',
+                'tabindex': i
+            }}) }}
+        </div>
+        <div class="col-sm-9 col-sm-pull-3 text-right">
+            <a href="#" class="try-again btn btn-link" title="Start over"><span class="fa fa-refresh"></span> start over</a>
+        </div>
+    </div>
+{{ form_end(form) }}

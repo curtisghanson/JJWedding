@@ -1,0 +1,76 @@
+{% extends 'JJWeddingBundle::manage.html.twig' %}
+
+{% block main %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><span class="fa fa-envelope-o"></span> Edit RSVP</h4>
+        </div>
+
+        <div class="panel-body">
+            {{ form_start(edit_form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                {% if form_errors is defined %}
+                    {% if form_errors.isValid == false %}
+                        <ul class="text-danger">
+                            {% for field in form_errors.fields %}
+                                <li><strong>{{ field.message }}</strong></li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endif %}
+
+                {{ form_widget(edit_form.referer, {value: app.request.headers.get('referer')}) }}
+                {{ form_widget(edit_form.userAgent, {value: app.request.server.get('HTTP_USER_AGENT')}) }}
+                {{ form_widget(edit_form.ip, {value: app.request.server.get('REMOTE_ADDR')}) }}
+                {{ form_widget(edit_form.port, {value: app.request.server.get('REMOTE_PORT')}) }}
+                {{ form_widget(edit_form.party) }}
+
+                <table class="table table-bordered table-condensed table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Yes</th>
+                            <th>No</th>
+                            <th>Email</th>
+                            <th>Recieve Updates</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for registrant in edit_form.registrants %}
+                            <tr>
+                                <td>{{ registrant.vars.value.firstName }} {{ registrant.vars.value.lastName }}</td>
+                                {% for choiceformView in registrant.rsvpType %}
+                                    <td>{{ form_widget(choiceformView) }}</td>
+                                {% endfor %}
+                                {#
+                                    {{ edit_form_widget(registrant.rsvpType, {'attr': {'class': ''}}) }}
+                                #}
+                                <td>{{ form_widget(registrant.email, {'attr': {'class': 'form-control'}}) }}</td>
+                                <td>{{ form_widget(registrant.recieveUpdates, {'attr': {'class': 'form-control-checkbox'}}) }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="row">
+                    <div class="form-group col-sm-12">
+                        {{ form_label(edit_form.comment, 'Comment') }}
+                        {{ form_errors(edit_form.comment) }}
+                        {{ form_widget(edit_form.comment, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-3 col-sm-offset-9">
+                        {{ form_widget(edit_form.submit, {'attr': {'class': 'btn btn-default form-control'}}) }}
+                    </div>
+                </div>
+            {{ form_end(edit_form) }}
+        </div>
+        <div class="panel-footer">
+            <a href="{{ path('party') }}" class="btn btn-xs btn-default">
+                <span class="fa fa-main-reply"></span> Back
+            </a>
+        </div>
+    </div>
+    {{ form(delete_form) }}
+{% endblock main %}

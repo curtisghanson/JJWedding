@@ -1,0 +1,30 @@
+rsvp:
+    pattern:  /
+    defaults: { _controller: "JJWeddingBundle:Rsvp:index" }
+
+rsvp_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "JJWeddingBundle:Rsvp:show" }
+
+rsvp_new:
+    pattern:  /{partyId}/new
+    defaults: { _controller: "JJWeddingBundle:Rsvp:new" }
+
+rsvp_create:
+    pattern:  /create
+    defaults: { _controller: "JJWeddingBundle:Rsvp:create" }
+    requirements: { _method: post }
+
+rsvp_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "JJWeddingBundle:Rsvp:edit" }
+
+rsvp_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "JJWeddingBundle:Rsvp:update" }
+    requirements: { _method: post|put }
+
+rsvp_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "JJWeddingBundle:Rsvp:delete" }
+    requirements: { _method: post|delete }

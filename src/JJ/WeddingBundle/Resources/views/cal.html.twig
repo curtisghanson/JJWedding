@@ -1,0 +1,33 @@
+{% block cal %}
+
+<div class="btn-group">
+    <a href="http://www.google.com/calendar/event?action=TEMPLATE&amp;trp=TRUE&amp;dates=20140311T070000/20140311T140000&amp;text=21st%20Annual%20Children's%20Clean%20Water%20Festival&amp;details=Where%20Children%20Are%20Making%20Waves!&amp;location=University%20of%20Portland%205000%20N%20Willamette%20Blvd%20Portland,%20OR%2097203&amp;sprop=name:21st%20Annual%20Children's%20Clean%20Water%20Festival&amp;sprop=website:www.cleanwaterfestival.org" target="_blank">Google</a>
+
+http://www.google.com/calendar/event?action=TEMPLATE&trp=TRUE
+    & dates=20140311T070000/20140311T140000
+    & text=21st%20Annual%20Children's%20Clean%20Water%20Festival
+    & details=Where%20Children%20Are%20Making%20Waves!
+    & location=University%20of%20Portland%205000%20N%20Willamette%20Blvd%20Portland,%20OR%2097203
+    & sprop=name:21st%20Annual%20Children's%20Clean%20Water%20Festival
+    & sprop=website:www.cleanwaterfestival.org
+
+http://calendar.yahoo.com/?v=60
+    & DUR=0700
+    & TITLE=21st%20Annual%20Children's%20Clean%20Water%20Festival
+    & ST=20140311T070000
+    & in_loc=University%20of%20Portland%205000%20N%20Willamette%20Blvd%20Portland,%20OR%2097203
+    & DESC=Where%20Children%20Are%20Making%20Waves!
+    & URL=www.cleanwaterfestival.org
+
+http://calendar.live.com/calendar/calendar.aspx?rru=addevent
+    & dtstart=20140311T070000
+    & dtend=20140311T140000
+    & location=University%20of%20Portland%205000%20N%20Willamette%20Blvd%20Portland,%20OR%2097203
+    & summary=21st%20Annual%20Children's%20Clean%20Water%20Festival
+    & description=Where%20Children%20Are%20Making%20Waves!
+
+[cal-site]&dates=[start|format]/[stop|format]&text=[title]&details=[desc]&location=[location]&sprop=name:[name]&sprop=[site]
+[cal-site]&DUR=[duration]&ST=[start|format]&TITLE=[title]&DESC=[desc]&in_loc=[location]&URL=[site]
+[cal-site]&dtstart=[start|format]&dtend=[stop|format]&summary=[title]&description=[desc]&locations=[location]
+
+{% endblock cal %}

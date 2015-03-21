@@ -1,0 +1,78 @@
+{% extends 'JJWeddingBundle::manage.html.twig' %}
+
+{% block main %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title"><span class="fa fa-users"></span> View Party</h4>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>The {{ entity.name }} Party <small>{{ entity.brideOrGroom|capitalize ~ ' Side'}}</small></h3>
+                </div>
+            </div>
+            {% if entity.rsvp %}
+                <div class="alert alert-success">
+                    <strong>Congrats!</strong> This party has RSVP'd. <a href="{{ path('rsvp_show', { 'id': entity.rsvp }) }}"><span class="fa fa-envelope-o"></span>View the RSVP.</a>
+                </div>
+            {% else %}
+                <div class="alert alert-warning">
+                    <strong>Patience!</strong> This party has not RSVP'd. Check back later.
+                </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-sm-12">
+                    <h4>Party Members</h4>
+                </div>
+            </div>
+            {% if entity.registrants %}
+                {% set registrants = entity.registrants %}
+            {% endif %}
+            <div class="list-group">
+                {% for registrant in registrants %}
+                    <a class="list-group-item" href="{{ path('registrant_show', { 'id': registrant.id }) }}">
+                        <p class="list-group-item-heading">
+                            <strong>
+                                {% if registrant.prefix %}{{ registrant.prefix }}{% endif %}
+                                {% if registrant.firstName %}{{ registrant.firstName }}{% endif %}
+                                {% if registrant.middleName %}{{ registrant.middleName }}{% endif %}
+                                {% if registrant.lastName %}{{ registrant.lastName }}{% endif %}
+                                {% if registrant.suffix %}{{ registrant.suffix }}{% endif %}
+                            </strong>
+                            {% if registrant.headOfParty == true %}
+                                <span class="label label-success">Head of Party</span>
+                            {% endif %}
+                            {% if registrant.gender == 'Male' %}
+                                <span class="label label-primary">Male</span>
+                            {% elseif registrant.gender == 'Female' %}
+                                <span class="label label-danger">Female</span>
+                            {% endif %}
+                            {% if registrant.adultOrChild == 'Adult' %}
+                                <span class="label label-default">Adult</span>
+                            {% elseif registrant.adultOrChild == 'Child' %}
+                                <span class="label label-warning">Child</span>
+                            {% endif %}
+                        </p>
+                        <p class="list-group-item-text">
+                            RSVP: {% if registrant.rsvpType %}{{ registrant.rsvpType }}{% else %}N/A{% endif %}
+                            {% if registrant.rsvp %}
+                                {% set rsvp = registrant.rsvp %}
+                            {% endif %}
+                        </p>
+                    </a>
+                {% else %}
+                    <div class="list-group-item">
+                        <p class="list-group-item-text"><em class="text-muted">No registrants found.</em></p>
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="panel-footer">
+            <a href="{{ path('party') }}">Back to list</a>
+            <a href="{{ path('party_edit', { 'id': entity.id }) }}">Edit</a>
+            {{ form(delete_form) }}
+        </div>
+    </div>
+
+{% endblock main %}

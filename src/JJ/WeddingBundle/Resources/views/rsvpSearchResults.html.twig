@@ -1,0 +1,52 @@
+{% set maxGroupItems = 4 %}
+{% set columns = 12 %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h4>select your party</h4>
+    </div>
+</div>
+
+{% for entity in entities %}
+    {% if (loop.index - 1) % maxGroupItems == 0 or loop.index == 1 %}<div class="row">{% endif %}
+        <div class="{{ 'col-sm-' ~ columns/maxGroupItems }}">
+            <div id="{{ entity.id }}" class="{{ 'selectable party-selectable party-selectable-' ~ entity.brideOrGroom|lower }}">
+                <div class="selectable-header">
+                    <em>the</em> <strong>{{ entity.name }}</strong> <em>party</em>
+                </div>
+                <div class="selectable-body">
+                    <ul class="list-unstyled">
+                        {% for registrant in entity.registrants %}<li>{{ registrant.firstName }} {{ registrant.lastName }}</li>{% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% if loop.index % maxGroupItems == 0 %}</div>
+    {% elseif loop.last %}
+        <div class="{{ 'col-sm-' ~ columns/maxGroupItems }}">
+            <div class="{{ 'selectable try-again' }}" title="Start over and try again.">
+                <div class="selectable-header">
+                    <strong>not your party?</strong>
+                </div>
+                <div class="selectable-body">
+                    <span class="fa fa-4x fa-refresh"></span>
+                    <span class="icon-text">try again</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% else %}
+        <div class="col-sm-offset-4 col-sm-4">
+            <div class="selectable try-again" title="Start over and try again.">
+                <div class="selectable-header">
+                    <strong>your party was not found</strong>
+                </div>
+                <div class="selectable-body">
+                    <span class="fa fa-4x fa-refresh"></span>
+                    <span class="icon-text">try again</span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}

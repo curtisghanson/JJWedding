@@ -1,0 +1,31 @@
+JJ\WeddingBundle\Entity\Party:
+    type:            entity
+    table:           party
+    repositoryClass: JJ\WeddingBundle\Entity\PartyRepository
+    fields:
+        id:
+            type: integer
+            id:   true
+            generator:
+                strategy: AUTO
+        name:
+            column:   name
+            type:     string
+            length:   128
+            nullable: false
+            unique:   false
+        brideOrGroom:
+            column:   bride_or_groom
+            type:     string
+            length:   5
+            nullable: true
+            unique:   false
+    lifecycleCallbacks: {  }
+    oneToOne:
+        rsvp:
+            targetEntity: Rsvp
+            mappedBy:     party
+    oneToMany:
+        registrants:
+            targetEntity: Registrant
+            mappedBy:     party
